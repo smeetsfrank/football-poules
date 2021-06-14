@@ -1,0 +1,39 @@
+@use './config' as *;
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+}
+
+input,
+textarea,
+select {
+    font: inherit;
+    outline: none;
+}
+
+button {
+    border: none;
+    background-color: transparent;
+    font-family: inherit;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    border-radius: 2rem;
+}
+
+ul,
+li,
+body {
+    margin: 0;
+    padding: 0;
+}
