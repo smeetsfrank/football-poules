@@ -1,6 +1,12 @@
 import React from 'react';
-import './App.module.scss';
+import classes from './App.module.scss';
 
-const App: React.FC = () => <div className="App">Ello!</div>;
+import Standings from './components/Standings/Standings';
+
+const App: React.FC = () => (
+  <div className={classes.wrapper}>
+    <Standings />
+  </div>
+);
 
 export default App;

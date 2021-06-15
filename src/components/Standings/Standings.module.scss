@@ -1,0 +1,47 @@
+.wrapper {
+  display: inline-grid;
+  grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
+  gap: 2rem;
+  width: 100%;
+  border: 1px solid orange;
+
+  .group {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    border: 2px solid;
+    border-radius: 1rem;
+    overflow: hidden;
+
+    .panel-head {
+      display: flex;
+      background-color: yellow;
+      padding: 1rem 1.5rem;
+
+      .stats-heading {
+        display: flex;
+        border: 1px solid red;
+        margin-left: auto;
+
+        > div {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 1.25rem;
+          height: 1.25rem;
+          background-color: red;
+          margin: 0 0.5rem;
+
+          &:first-child,
+          &:last-child {
+            margin: 0;
+          }
+        }
+      }
+    }
+
+    .stats-title {
+      border: 1px solid red;
+    }
+  }
+}

@@ -1,0 +1,17 @@
+.group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border: 1px solid red;
+
+    li {
+        display: flex;
+        align-items: center;
+        height: 3rem;
+        padding: 0 1.5rem;
+
+        &:nth-of-type(even) {
+            background-color: yellow;
+        }
+    }
+}
