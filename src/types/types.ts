@@ -1,22 +1,23 @@
-export interface TeamMatchStatsProps {
+export interface ITeamStats {
+  draw: number;
+  goalAgainst: number;
   goalDifference: number;
-  goalsAgainst: number;
   goalsFor: number;
   lost: number;
   playedGames: number;
   points: number;
   position: number;
+  won: number;
 }
 
-export interface GeneralTeamDataProps {
-  id: string;
+export interface ITeam {
+  id: number;
   name: string;
   crestUrl: string;
+  stats: ITeamStats;
 }
 
-export interface TeamProps {
-  id: string;
-  name: string;
-  crestUrl: string;
-  stats: TeamMatchStatsProps;
+export interface IGroup {
+  group: string;
+  teams: ITeam[];
 }

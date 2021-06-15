@@ -1,9 +1,9 @@
 import React from 'react';
-import { TeamProps } from '../../types/types';
+import { ITeam } from '../../types/types';
 
 import classes from './Team.module.scss';
 
-const Team: React.FC<TeamProps> = ({ id, name, crestUrl, stats }) => (
+const Team: React.FC<ITeam> = ({ name, crestUrl, stats }) => (
   <>
     <div className={classes.column}>
       <img src={crestUrl} alt={`${name}-flag`} />
