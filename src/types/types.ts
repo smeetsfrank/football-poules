@@ -14,7 +14,11 @@ export interface ITeam {
   id: number;
   name: string;
   crestUrl: string;
-  stats: ITeamStats;
+  stats?: ITeamStats;
+}
+
+export interface ITeams {
+  teams: ITeam[];
 }
 
 export interface IGroup {
