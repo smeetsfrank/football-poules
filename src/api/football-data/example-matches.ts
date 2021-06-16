@@ -1,4 +1,4 @@
-const exampleMatches = {
+const exampleMatches = async () => ({
   count: 51,
   filters: {},
   competition: {
@@ -2966,6 +2966,6 @@ const exampleMatches = {
       referees: [],
     },
   ],
-};
+});
 
 export default exampleMatches;
