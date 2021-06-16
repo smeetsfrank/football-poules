@@ -1,4 +1,5 @@
 // http://api.football-data.org/v2/competitions/2018/teams
+
 const exampleTeams = async () => ({
   count: 24,
   filters: {},
