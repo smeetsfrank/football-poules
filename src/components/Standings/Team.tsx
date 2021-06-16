@@ -10,9 +10,9 @@ const Team: React.FC<ITeam> = ({ name, crestUrl, stats }) => (
       {name}
     </div>
     <div className={`${classes.column} ${classes.stats}`}>
-      <div>{stats.playedGames}</div>
-      <div>{stats.goalDifference}</div>
-      <div>{stats.points}</div>
+      <div>{stats?.playedGames}</div>
+      <div>{stats?.goalDifference}</div>
+      <div>{stats?.points}</div>
     </div>
   </>
 );
