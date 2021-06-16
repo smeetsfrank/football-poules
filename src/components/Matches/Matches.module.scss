@@ -1,5 +1,27 @@
-.match {
+.wrapper {
     display: flex;
-    padding: 2rem;
-    border: 1px solid;
+
+    .match {
+        display: flex;
+        flex-direction: column;
+        padding: 1.5rem;
+        width: 100%;
+        min-width: 14rem;
+        border: 2px solid;
+        border-radius: 1rem;
+        overflow: hidden;
+
+        .home-team,
+        .away-team {
+            display: flex;
+
+            .score {
+                margin-left: auto;
+            }
+        }
+
+        .home-team {
+            margin: 0 0 0.5rem 0;
+        }
+    }
 }

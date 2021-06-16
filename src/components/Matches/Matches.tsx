@@ -15,23 +15,28 @@ const Matches: React.FC = () => {
     fetchMatches();
   }, []);
   return (
-    <div>
-      All Matches
-      {matches?.map(
-        (match: any) =>
-          match.homeTeam.name && (
-            <div key={match.id} className={classes.match}>
-              {console.log(match)}
-              <div>{match.homeTeam?.name}</div>
-              <div>{match.awayTeam.name}</div>
-              <div>
-                SCORE:
-                {match.score?.fullTime?.homeTeam}
-                {match.score?.fullTime?.awayTeam}
+    <div className={classes.wrapper}>
+      <div className={classes.matches}>
+        {matches?.map(
+          (match: any) =>
+            match.homeTeam.name && (
+              <div key={match.id} className={classes.match}>
+                <div className={classes['home-team']}>
+                  {match.homeTeam?.name}
+                  <div className={classes.score}>
+                    {match.score?.fullTime?.homeTeam}
+                  </div>
+                </div>
+                <div className={classes['away-team']}>
+                  {match.awayTeam?.name}
+                  <div className={classes.score}>
+                    {match.score?.fullTime?.awayTeam}
+                  </div>
+                </div>
               </div>
-            </div>
-          ),
-      )}
+            ),
+        )}
+      </div>
     </div>
   );
 };
