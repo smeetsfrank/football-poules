@@ -8,6 +8,7 @@ import { setTeams } from './store/slices/teamSlice';
 import exampleTeams from './api/football-data/example-teams';
 
 import Navigation from './components/Navigation/Navigation';
+import MySquad from './components/MySquad/MySquad';
 import Matches from './components/Matches/Matches';
 import Standings from './components/Standings/Standings';
 
@@ -36,6 +37,9 @@ const App: React.FC = () => {
       <Navigation />
       <div className={classes.wrapper}>
         <Switch>
+          <Route path="/mysquad">
+            <MySquad />
+          </Route>
           <Route path="/matches">
             <Matches />
           </Route>

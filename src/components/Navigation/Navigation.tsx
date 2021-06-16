@@ -5,6 +5,9 @@ const Navigation: React.FC = () => (
   <nav>
     <ul>
       <li>
+        <Link to="/mysquad">Build my squad</Link>
+      </li>
+      <li>
         <Link to="/matches">All matches</Link>
       </li>
       <li>
