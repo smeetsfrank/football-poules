@@ -1,0 +1,102 @@
+.goalkeeper {
+    background: blue;
+    grid-area: goalkeeper;
+}
+
+.defense {
+    background: red;
+    grid-area: defense;
+
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 0.5rem;
+    grid-template-areas:
+        "f-lwb f-lb f-cb f-rb f-rwb"
+        "lwb lb cb rb rwb";
+
+    .player-1 {
+        border: 1px solid blue;
+        grid-area: f-lwb;
+    }
+
+    .player-2 {
+        border: 1px solid blue;
+        grid-area: lb;
+    }
+
+    .player-3 {
+        border: 1px solid blue;
+        grid-area: rb;
+    }
+
+    .player-4 {
+        border: 1px solid blue;
+        grid-area: f-rwb;
+    }
+}
+
+.midfield {
+    background: yellow;
+    grid-area: midfield;
+}
+
+.attack {
+    background: purple;
+    grid-area: attack;
+}
+
+.pitch {
+    display: grid;
+    grid-template-rows: 2fr 3fr 2fr 1fr;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    width: 30rem;
+    height: 40rem;
+    border: 1px solid;
+    grid-template-areas:
+        "attack"
+        "midfield"
+        "defense"
+        "goalkeeper";
+}
+
+// .container {
+//     display: grid;
+//     grid-template-columns: repeat(5, 1fr);
+//     gap: 10px;
+
+//     display: grid;
+//     border: 1px solid red;
+//     width: 30rem;
+//     height: 40rem;
+//     grid-template-rows: auto;
+//     grid-template-areas:
+//         "att-6 att-7 att-8 att-9 att-10"
+//         "att-1 att-2 att-3 att-4 att-5"
+//         "mid-6 mid-7 mid-8 mid-9 mid-10"
+//         "mid-1 mid-2 mid-3 mid-4 mid-5"
+//         "def-6 def-7 def-8 def-9 def-10"
+//         "def-1 def-2 def-3 def-4 def-5"
+//         ". . goa-1 . .";
+//     > div {
+//         border: 1px solid;
+//     }
+// }
+
+// .player-1 {
+//     grid-area: goa-1;
+// }
+// .player-2 {
+//     grid-area: def-1;
+// }
+// .player-3 {
+//     grid-area: def-2;
+// }
+// .player-4 {
+//     grid-area: def-4;
+// }
+
+// .player-5 {
+//     grid-area: def-5;
+// }
