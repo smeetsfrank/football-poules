@@ -14,7 +14,7 @@ const Squad: React.FC<any> = ({ formation }) => {
   const [midfielders, setMidfielders] = useState<any>();
   const [attackers, setAttackers] = useState<any>();
 
-  const { defense, midfield, attack } = formation;
+  const { id: formationId, defense, midfield, attack } = formation;
 
   const createPlayers = (num: number, position: string) => {
     const players = [];
@@ -31,10 +31,10 @@ const Squad: React.FC<any> = ({ formation }) => {
     setDefenders(createPlayers(defense, 'defender'));
     setMidfielders(createPlayers(midfield, 'midfielder'));
     setAttackers(createPlayers(attack, 'attacker'));
-  }, []);
+  }, [formationId]);
 
   return (
-    <div className={classes.layout}>
+    <div className={`${classes.layout} ${classes[`${formationId}`]}`}>
       <div className={classes.attack}>
         {attackers?.map(({ id }: any) => (
           <div className={classes[`player-${id}`]} key={id}>

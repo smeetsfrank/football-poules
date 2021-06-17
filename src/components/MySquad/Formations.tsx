@@ -1,26 +1,28 @@
-import React, { useRef } from 'react';
+import React from 'react';
 
 import FORMATIONS from '../../constants';
 
 type Props = {
-  onFormationChange: (formation: string) => void;
+  onFormationChange: (formation: any) => void;
 };
 
 const Formations: React.FC<Props> = ({ onFormationChange }) => {
-  const selectRef = useRef<HTMLSelectElement>(null);
-  const options = FORMATIONS.map(({ name }, index) => (
-    // eslint-disable-next-line react/no-array-index-key
-    <option key={index}>{name}</option>
+  const formationChangeHandler = (e: any) => {
+    const selectedFormation = FORMATIONS.find(
+      ({ id }) => id === e.target.value,
+    );
+    onFormationChange(selectedFormation);
+  };
+
+  const options = FORMATIONS.map(({ name, id }) => (
+    <option key={id} value={id}>
+      {name}
+    </option>
   ));
 
   return (
     <div>
-      <select
-        onChange={() => onFormationChange(selectRef.current!.value)}
-        ref={selectRef}
-      >
-        {options}
-      </select>
+      <select onChange={formationChangeHandler}>{options}</select>
     </div>
   );
 };
