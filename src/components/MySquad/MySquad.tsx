@@ -9,9 +9,9 @@ const MySquad: React.FC = () => {
   const [formation, setFormation] = useState<any>({
     id: 'form4-4-2',
     name: '4-4-2',
-    defense: 4,
-    midfield: 4,
-    attack: 2,
+    defenders: 4,
+    midfielders: 4,
+    attackers: 2,
   });
 
   const formationHandler = (selectedFormation: any) => {
