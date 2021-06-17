@@ -1,5 +1,4 @@
 .goalkeeper {
-    background: blue;
     grid-area: goalkeeper;
 
     > div {
@@ -10,7 +9,6 @@
 }
 
 .defense {
-    background: red;
     grid-area: defense;
 
     display: grid;
@@ -48,7 +46,6 @@
 }
 
 .midfield {
-    background: yellow;
     grid-area: midfield;
 
     display: grid;
@@ -87,7 +84,6 @@
 }
 
 .attack {
-    background: purple;
     grid-area: attack;
 
     display: grid;
@@ -113,7 +109,9 @@
     }
 }
 
-.pitch {
+.layout {
+    position: relative;
+    padding: 2rem;
     display: grid;
     grid-template-rows: 2fr 3fr 2fr 1fr;
     grid-template-columns: 1fr;
@@ -126,6 +124,4 @@
         "midfield"
         "defense"
         "goalkeeper";
-
-    background-color: green;
 }

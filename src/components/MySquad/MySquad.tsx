@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import classes from './MySquad.module.scss';
+import Pitch from './Pitch/Pitch';
 import Formations from './Formations';
 import Squad from './Squad';
 
@@ -19,7 +21,10 @@ const MySquad: React.FC = () => {
     <div>
       Build your squad!
       <Formations onFormationChange={formationHandler} />
-      <Squad formation={formation} />
+      <div className={classes.wrapper}>
+        <Pitch />
+        <Squad formation={formation} />
+      </div>
     </div>
   );
 };

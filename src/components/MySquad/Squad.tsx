@@ -34,7 +34,7 @@ const Squad: React.FC<any> = ({ formation }) => {
   }, []);
 
   return (
-    <div className={classes.pitch}>
+    <div className={classes.layout}>
       <div className={classes.attack}>
         {attackers?.map(({ id }: any) => (
           <div className={classes[`player-${id}`]} key={id}>
