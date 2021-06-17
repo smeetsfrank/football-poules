@@ -7,6 +7,7 @@ import Squad from './Squad';
 
 const MySquad: React.FC = () => {
   const [formation, setFormation] = useState<any>({
+    id: 'form4-4-2',
     name: '4-4-2',
     defense: 4,
     midfield: 4,
