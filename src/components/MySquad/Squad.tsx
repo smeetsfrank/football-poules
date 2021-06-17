@@ -35,8 +35,20 @@ const Squad: React.FC<any> = ({ formation }) => {
 
   return (
     <div className={classes.pitch}>
-      <div className={classes.attack}>Attack</div>
-      <div className={classes.midfield}>Midfield</div>
+      <div className={classes.attack}>
+        {attackers?.map(({ id }: any) => (
+          <div className={classes[`player-${id}`]} key={id}>
+            <Player id={id} />
+          </div>
+        ))}
+      </div>
+      <div className={classes.midfield}>
+        {midfielders?.map(({ id }: any) => (
+          <div className={classes[`player-${id}`]} key={id}>
+            <Player id={id} />
+          </div>
+        ))}
+      </div>
       <div className={classes.defense}>
         {defenders?.map(({ id }: any) => (
           <div className={classes[`player-${id}`]} key={id}>
@@ -44,7 +56,11 @@ const Squad: React.FC<any> = ({ formation }) => {
           </div>
         ))}
       </div>
-      <div className={classes.goalkeeper}>Goalkeeper</div>
+      <div className={classes.goalkeeper}>
+        <div className={classes['player-1}']} key="goalkeeper">
+          <Player id={1} />
+        </div>
+      </div>
     </div>
   );
 };
