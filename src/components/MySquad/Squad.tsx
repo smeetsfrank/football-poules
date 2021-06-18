@@ -48,7 +48,7 @@ const Squad: React.FC<any> = ({ formation }) => {
     <div className={`${classes.layout} ${classes[`${formationId}`]}`}>
       <div className={classes.attack}>
         {attackers.map((position: string) => (
-          <div style={{ gridArea: position }} id={uuid()}>
+          <div style={{ gridArea: position }} key={uuid()}>
             <Player
               availablePlayers={attackersList}
               onSelectPlayer={selectedPlayerHandler}
@@ -58,7 +58,7 @@ const Squad: React.FC<any> = ({ formation }) => {
       </div>
       <div className={classes.midfield}>
         {midfielders.map((position: string) => (
-          <div style={{ gridArea: position }} id={uuid()}>
+          <div style={{ gridArea: position }} key={uuid()}>
             <Player
               availablePlayers={midfieldersList}
               onSelectPlayer={selectedPlayerHandler}
@@ -68,7 +68,7 @@ const Squad: React.FC<any> = ({ formation }) => {
       </div>
       <div className={classes.defense}>
         {defenders.map((position: string) => (
-          <div style={{ gridArea: position }} id={uuid()}>
+          <div style={{ gridArea: position }} key={uuid()}>
             <Player
               availablePlayers={defendersList}
               onSelectPlayer={selectedPlayerHandler}
