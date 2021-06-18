@@ -11,8 +11,9 @@ type Props = {
 };
 
 const filterPosition = (squad: any, position?: string) =>
-  // eslint-disable-next-line implicit-arrow-linebreak
-  squad.filter((player: any) => player.position === position);
+  squad.filter(
+    (player: any) => player.position === position && player.selected !== true,
+  );
 
 const PlayerSelection: React.FC<Props> = ({
   formation,
@@ -68,7 +69,17 @@ const PlayerSelection: React.FC<Props> = ({
   );
 
   const selectedPlayerHandler = (player: any, ctx: any) => {
+    if (ctx.action === 'clear') {
+      if (ctx.removedValues.length > 0) {
+        selectedPlayer({
+          action: ctx.action,
+          value: ctx.removedValues[0].value,
+        });
+        return;
+      }
+    }
     const selected = {
+      action: ctx.action,
       ...player,
       role: ctx.name,
     };
@@ -85,6 +96,7 @@ const PlayerSelection: React.FC<Props> = ({
         <h2>Attackers</h2>
         {formation.attackers?.map((position: string) => (
           <Select
+            isClearable
             key={position}
             name={position}
             onChange={selectedPlayerHandler}
@@ -96,6 +108,7 @@ const PlayerSelection: React.FC<Props> = ({
         <h2>Midfielders</h2>
         {formation.midfielders?.map((position: string) => (
           <Select
+            isClearable
             key={position}
             name={position}
             onChange={selectedPlayerHandler}
@@ -107,6 +120,7 @@ const PlayerSelection: React.FC<Props> = ({
         <h2>Defenders</h2>
         {formation.defenders?.map((position: string) => (
           <Select
+            isClearable
             key={position}
             name={position}
             onChange={selectedPlayerHandler}
@@ -118,6 +132,7 @@ const PlayerSelection: React.FC<Props> = ({
         <h2>Goalkeepers</h2>
         {formation.goalkeeper?.map((position: string) => (
           <Select
+            isClearable
             key={position}
             name={position}
             onChange={selectedPlayerHandler}

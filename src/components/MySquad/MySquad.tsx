@@ -30,11 +30,27 @@ const MySquad: React.FC = () => {
   };
 
   const selectedPlayerHandler = (selectedPlayer: any) => {
-    setMySquad((prevState: any) => [...prevState, selectedPlayer]);
-    const updatePlayerList = players.filter(
-      ({ id }: any) => id !== selectedPlayer.value,
-    );
-    setPlayers(updatePlayerList);
+    if (selectedPlayer.action === 'clear') {
+      const updatedPlayerList = players.map((player: any) => {
+        if (player.id === selectedPlayer.value) {
+          return { ...player, selected: false };
+        }
+        return player;
+      });
+      /* REMOVING PLAYERS FROM MY SQUAD STATE */
+      setPlayers(updatedPlayerList);
+    }
+
+    if (selectedPlayer.action === 'select-option') {
+      const updatedPlayerList = players.map((player: any) => {
+        if (player.id === selectedPlayer.value) {
+          return { ...player, selected: true };
+        }
+        return player;
+      });
+      setMySquad((prevState: any) => [...prevState, selectedPlayer]);
+      setPlayers(updatedPlayerList);
+    }
   };
 
   useEffect(() => {

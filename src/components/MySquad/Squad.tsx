@@ -2,7 +2,7 @@
 /* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable consistent-return */
 /* eslint-disable no-plusplus */
-import React from 'react';
+import React, { useState } from 'react';
 import { v4 as uuid } from 'uuid';
 
 import classes from './Squad.module.scss';
@@ -13,7 +13,8 @@ type Props = {
 };
 
 const Squad: React.FC<any> = ({ formation, players }) => {
-  // // const [playerList, setPlayerList] = useState<any>();
+  const [playerList, setPlayerList] = useState<any>();
+
   const {
     id: formationId,
     attackers,
@@ -22,6 +23,7 @@ const Squad: React.FC<any> = ({ formation, players }) => {
     goalkeeper,
   } = formation;
 
+  console.log(players);
   return (
     <div className={`${classes.layout} ${classes[`${formationId}`]}`}>
       <div className={classes.attack}>
