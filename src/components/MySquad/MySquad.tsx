@@ -37,7 +37,9 @@ const MySquad: React.FC = () => {
         }
         return player;
       });
-      /* REMOVING PLAYERS FROM MY SQUAD STATE */
+      setMySquad(
+        mySquad.filter((player: any) => player?.value !== selectedPlayer.value),
+      );
       setPlayers(updatedPlayerList);
     }
 
