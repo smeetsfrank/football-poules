@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { v4 as uuid } from 'uuid';
+import Select from 'react-select';
 
 import classes from './Player.module.scss';
 
@@ -9,18 +10,25 @@ type Props = {
 };
 
 const Player: React.FC<Props> = ({ availablePlayers, onSelectPlayer }) => {
-  const selectedPlayerHandler = (e: any) => {
-    onSelectPlayer(e.target.value);
+  const [selectedOption, setSelectedOption] = useState(null);
+
+  const selectedPlayerHandler = (player: any) => {
+    setSelectedOption(player);
+    onSelectPlayer(player.value);
   };
+
+  const options = availablePlayers?.map(({ id, name }: any) => ({
+    value: id,
+    label: name,
+  }));
+
   return (
     <div className={classes.player}>
-      <select onChange={selectedPlayerHandler}>
-        {availablePlayers?.map(({ id, name }: any) => (
-          <option key={uuid()} value={id}>
-            {name}
-          </option>
-        ))}
-      </select>
+      <Select
+        defaultValue={selectedOption}
+        onChange={selectedPlayerHandler}
+        options={options}
+      />
     </div>
   );
 };
