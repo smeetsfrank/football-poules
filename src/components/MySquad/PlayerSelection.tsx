@@ -77,7 +77,7 @@ const PlayerSelection: React.FC<Props> = ({
 
   useEffect(() => {
     filterPlayers();
-  }, [formation]);
+  }, [formation, players]);
 
   return (
     <div>

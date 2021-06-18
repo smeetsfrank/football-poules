@@ -31,7 +31,12 @@ const MySquad: React.FC = () => {
 
   const selectedPlayerHandler = (selectedPlayer: any) => {
     setMySquad((prevState: any) => [...prevState, selectedPlayer]);
+    const updatePlayerList = players.filter(
+      ({ id }: any) => id !== selectedPlayer.value,
+    );
+    setPlayers(updatePlayerList);
   };
+
   useEffect(() => {
     fetchTeam();
   }, []);
