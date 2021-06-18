@@ -75,3 +75,11 @@
         "defense"
         "goalkeeper";
 }
+
+.position {
+    display: flex;
+    width: 2rem;
+    height: 2rem;
+    background-color: orange;
+    border-radius: 50%;
+}

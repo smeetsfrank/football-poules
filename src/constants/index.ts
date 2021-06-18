@@ -2,6 +2,7 @@ const FORMATIONS = [
   {
     id: 'form4-4-2',
     name: '4-4-2',
+    goalkeeper: ['gk'],
     defenders: ['f-lwb', 'lb', 'rb', 'f-rwb'],
     midfielders: ['lw', 'lcm', 'rcm', 'rw'],
     attackers: ['lcf', 'rcf'],
@@ -9,6 +10,7 @@ const FORMATIONS = [
   {
     id: 'form4-4-2-diamond',
     name: '4-4-2 (diamond)',
+    goalkeeper: ['gk'],
     defenders: ['f-lwb', 'lb', 'rb', 'f-rwb'],
     midfielders: ['lm', 'cdm', 'cam', 'rm'],
     attackers: ['lcf', 'rcf'],
@@ -16,6 +18,7 @@ const FORMATIONS = [
   {
     id: 'form4-3-3',
     name: '4-3-3',
+    goalkeeper: ['gk'],
     defenders: ['f-lwb', 'lb', 'rb', 'f-rwb'],
     midfielders: ['lm', 'cm', 'rm'],
     attackers: ['lf', 'st', 'rf'],
