@@ -22,33 +22,18 @@ const filterPosition = (squad: any, position?: string) =>
 const Squad: React.FC<any> = ({ formation }) => {
   // const [playerList, setPlayerList] = useState<any>();
   const [keepersList, setKeepersList] = useState<any>();
-  const [defense, setDefense] = useState<any>();
   const [defendersList, setDefendersList] = useState<any>();
-  const [midfield, setMidfield] = useState<any>();
   const [midfieldersList, setMidfieldersList] = useState<any>();
-  const [attack, setAttack] = useState<any>();
   const [attackersList, setAttackersList] = useState<any>();
 
   const { id: formationId, defenders, midfielders, attackers } = formation;
 
-  const createPlayers = (num: number, position: string) => {
-    const players = [];
-    for (let i = 0; i < num; i++) {
-      players.push({
-        id: i + 1,
-        position,
-      });
-    }
-    return players;
-  };
-
   const fetchTeam = async () => {
     const { squad } = await exampleTeam();
-    // setPlayerList(squad);
+    setAttackersList(filterPosition(squad, 'Attacker'));
+    setMidfieldersList(filterPosition(squad, 'Midfielder'));
     setDefendersList(filterPosition(squad, 'Defender'));
     setKeepersList(filterPosition(squad, 'Goalkeeper'));
-    setMidfieldersList(filterPosition(squad, 'Midfielder'));
-    setAttackersList(filterPosition(squad, 'Attacker'));
   };
 
   const selectedPlayerHandler = (id: any) => {
@@ -59,17 +44,11 @@ const Squad: React.FC<any> = ({ formation }) => {
     fetchTeam();
   }, []);
 
-  useEffect(() => {
-    setDefense(createPlayers(defenders, 'defender'));
-    setMidfield(createPlayers(midfielders, 'midfielder'));
-    setAttack(createPlayers(attackers, 'attacker'));
-  }, [formationId]);
-
   return (
     <div className={`${classes.layout} ${classes[`${formationId}`]}`}>
       <div className={classes.attack}>
-        {attack?.map(({ id }: any) => (
-          <div className={classes[`player-${id}`]} key={uuid()}>
+        {attackers.map((position: string) => (
+          <div style={{ gridArea: position }} id={uuid()}>
             <Player
               availablePlayers={attackersList}
               onSelectPlayer={selectedPlayerHandler}
@@ -78,8 +57,8 @@ const Squad: React.FC<any> = ({ formation }) => {
         ))}
       </div>
       <div className={classes.midfield}>
-        {midfield?.map(({ id }: any) => (
-          <div className={classes[`player-${id}`]} key={id}>
+        {midfielders.map((position: string) => (
+          <div style={{ gridArea: position }} id={uuid()}>
             <Player
               availablePlayers={midfieldersList}
               onSelectPlayer={selectedPlayerHandler}
@@ -88,8 +67,8 @@ const Squad: React.FC<any> = ({ formation }) => {
         ))}
       </div>
       <div className={classes.defense}>
-        {defense?.map(({ id }: any) => (
-          <div className={classes[`player-${id}`]} key={id}>
+        {defenders.map((position: string) => (
+          <div style={{ gridArea: position }} id={uuid()}>
             <Player
               availablePlayers={defendersList}
               onSelectPlayer={selectedPlayerHandler}
