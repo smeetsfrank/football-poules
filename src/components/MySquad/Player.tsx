@@ -1,6 +1,5 @@
-/* eslint-disable function-paren-newline */
-/* eslint-disable implicit-arrow-linebreak */
-import React, { useEffect } from 'react';
+import React from 'react';
+import { v4 as uuid } from 'uuid';
 
 import classes from './Player.module.scss';
 
@@ -16,51 +15,11 @@ const Player: React.FC<Props> = ({ availablePlayers, onSelectPlayer }) => {
   return (
     <div className={classes.player}>
       <select onChange={selectedPlayerHandler}>
-        <>
-          <optgroup label="Goalkeepers">
-            <option>Select player</option>
-            {availablePlayers?.map(
-              ({ id, name, position }: any) =>
-                position === 'Goalkeeper' && (
-                  <>
-                    <option key={id} value={id}>
-                      {name}
-                    </option>
-                  </>
-                ),
-            )}
-          </optgroup>
-          <optgroup label="Defenders">
-            {availablePlayers?.map(
-              ({ id, name, position }: any) =>
-                position === 'Defender' && (
-                  <option key={id} value={id}>
-                    {name}
-                  </option>
-                ),
-            )}
-          </optgroup>
-          <optgroup label="Midfielders">
-            {availablePlayers?.map(
-              ({ id, name, position }: any) =>
-                position === 'Midfielder' && (
-                  <option key={id} value={id}>
-                    {name}
-                  </option>
-                ),
-            )}
-          </optgroup>
-          <optgroup label="Attackers">
-            {availablePlayers?.map(
-              ({ id, name, position }: any) =>
-                position === 'Attacker' && (
-                  <option key={id} value={id}>
-                    {name}
-                  </option>
-                ),
-            )}
-          </optgroup>
-        </>
+        {availablePlayers?.map(({ id, name }: any) => (
+          <option key={uuid()} value={id}>
+            {name}
+          </option>
+        ))}
       </select>
     </div>
   );
