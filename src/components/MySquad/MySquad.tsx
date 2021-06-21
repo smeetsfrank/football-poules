@@ -61,7 +61,7 @@ const MySquad: React.FC = () => {
 
   return (
     <div className={classes.wrapper}>
-      <div className={classes['right-panel']}>
+      <div className={classes['left-panel']}>
         <Formations onFormationChange={formationHandler} />
         <div className={classes['pitch-wrapper']}>
           <Pitch />
