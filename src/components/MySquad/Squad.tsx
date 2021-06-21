@@ -13,23 +13,14 @@ type Props = {
 };
 
 const Squad: React.FC<any> = ({ formation, players }) => {
-  const [playerList, setPlayerList] = useState<any>();
+  const { attackers, midfielders, defenders, goalkeeper } = formation;
 
-  const {
-    id: formationId,
-    attackers,
-    midfielders,
-    defenders,
-    goalkeeper,
-  } = formation;
-
-  console.log(players);
   return (
-    <div className={`${classes.layout} ${classes[`${formationId}`]}`}>
+    <div className={classes.layout}>
       <div className={classes.attack}>
         {attackers.map((position: string) => (
           <div style={{ gridArea: position }} key={uuid()}>
-            <div className={classes.position} />
+            <div className={classes.position}>{position}</div>
             {players.map(({ label, role }: any) => role === position && label)}
           </div>
         ))}
@@ -37,7 +28,7 @@ const Squad: React.FC<any> = ({ formation, players }) => {
       <div className={classes.midfield}>
         {midfielders.map((position: string) => (
           <div style={{ gridArea: position }} key={uuid()}>
-            <div className={classes.position} />
+            <div className={classes.position}>{position}</div>
             {players.map(({ label, role }: any) => role === position && label)}
           </div>
         ))}
@@ -45,7 +36,7 @@ const Squad: React.FC<any> = ({ formation, players }) => {
       <div className={classes.defense}>
         {defenders.map((position: string) => (
           <div style={{ gridArea: position }} key={uuid()}>
-            <div className={classes.position} />
+            <div className={classes.position}>{position}</div>
             {players.map(({ label, role }: any) => role === position && label)}
           </div>
         ))}
@@ -53,7 +44,7 @@ const Squad: React.FC<any> = ({ formation, players }) => {
       <div className={classes.goalkeeper}>
         {goalkeeper.map((position: string) => (
           <div style={{ gridArea: position }} key={uuid()}>
-            <div className={classes.position} />
+            <div className={classes.position}>{position}</div>
             {players.map(({ label, role }: any) => role === position && label)}
           </div>
         ))}

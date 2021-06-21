@@ -10,10 +10,18 @@ type Props = {
   selectedPlayer: (player: any) => void;
 };
 
-const filterPosition = (squad: any, position?: string) =>
+const filterPlayerPosition = (squad: any, position?: string) =>
   squad.filter(
     (player: any) => player.position === position && player.selected !== true,
   );
+
+const playerDetails = (player: any) =>
+  player?.map(({ id, name, position, shirtNumber }: any) => ({
+    value: id,
+    label: name,
+    position,
+    shirtNumber,
+  }));
 
 const PlayerSelection: React.FC<Props> = ({
   formation,
@@ -26,47 +34,16 @@ const PlayerSelection: React.FC<Props> = ({
   const [goalkeepersList, setGoalkeepersList] = useState<any>();
 
   const filterPlayers = () => {
-    setAttackersList(filterPosition(players, 'Attacker'));
-    setMidfieldersList(filterPosition(players, 'Midfielder'));
-    setDefendersList(filterPosition(players, 'Defender'));
-    setGoalkeepersList(filterPosition(players, 'Goalkeeper'));
+    setAttackersList(filterPlayerPosition(players, 'Attacker'));
+    setMidfieldersList(filterPlayerPosition(players, 'Midfielder'));
+    setDefendersList(filterPlayerPosition(players, 'Defender'));
+    setGoalkeepersList(filterPlayerPosition(players, 'Goalkeeper'));
   };
 
-  const attackOptions = attackersList?.map(
-    ({ id, name, position, shirtNumber }: any) => ({
-      value: id,
-      label: name,
-      position,
-      shirtNumber,
-    }),
-  );
-
-  const midfieldOptions = midfieldersList?.map(
-    ({ id, name, position, shirtNumber }: any) => ({
-      value: id,
-      label: name,
-      position,
-      shirtNumber,
-    }),
-  );
-
-  const defenseOptions = defendersList?.map(
-    ({ id, name, position, shirtNumber }: any) => ({
-      value: id,
-      label: name,
-      position,
-      shirtNumber,
-    }),
-  );
-
-  const goalkeeperOptions = goalkeepersList?.map(
-    ({ id, name, position, shirtNumber }: any) => ({
-      value: id,
-      label: name,
-      position,
-      shirtNumber,
-    }),
-  );
+  const attackSelectOptions = playerDetails(attackersList);
+  const midfieldSelectOptions = playerDetails(midfieldersList);
+  const defenseSelectOptions = playerDetails(defendersList);
+  const goalkeeperSelectOptions = playerDetails(goalkeepersList);
 
   const selectedPlayerHandler = (player: any, ctx: any) => {
     if (ctx.action === 'clear') {
@@ -95,49 +72,61 @@ const PlayerSelection: React.FC<Props> = ({
       <div className={classes.attack}>
         <h2>Attackers</h2>
         {formation.attackers?.map((position: string) => (
-          <Select
-            isClearable
-            key={position}
-            name={position}
-            onChange={selectedPlayerHandler}
-            options={attackOptions}
-          />
+          <>
+            <Select
+              isClearable
+              key={position}
+              name={position}
+              onChange={selectedPlayerHandler}
+              options={attackSelectOptions}
+            />
+            <span>{position}</span>
+          </>
         ))}
       </div>
       <div className={classes.midfield}>
         <h2>Midfielders</h2>
         {formation.midfielders?.map((position: string) => (
-          <Select
-            isClearable
-            key={position}
-            name={position}
-            onChange={selectedPlayerHandler}
-            options={midfieldOptions}
-          />
+          <>
+            <Select
+              isClearable
+              key={position}
+              name={position}
+              onChange={selectedPlayerHandler}
+              options={midfieldSelectOptions}
+            />
+            <span>{position}</span>
+          </>
         ))}
       </div>
       <div className={classes.defense}>
         <h2>Defenders</h2>
         {formation.defenders?.map((position: string) => (
-          <Select
-            isClearable
-            key={position}
-            name={position}
-            onChange={selectedPlayerHandler}
-            options={defenseOptions}
-          />
+          <>
+            <Select
+              isClearable
+              key={position}
+              name={position}
+              onChange={selectedPlayerHandler}
+              options={defenseSelectOptions}
+            />
+            <div className={classes.position}>{position}</div>
+          </>
         ))}
       </div>
       <div className={classes.goalkeeper}>
         <h2>Goalkeepers</h2>
         {formation.goalkeeper?.map((position: string) => (
-          <Select
-            isClearable
-            key={position}
-            name={position}
-            onChange={selectedPlayerHandler}
-            options={goalkeeperOptions}
-          />
+          <>
+            <Select
+              isClearable
+              key={position}
+              name={position}
+              onChange={selectedPlayerHandler}
+              options={goalkeeperSelectOptions}
+            />
+            <div className={classes.position}>{position}</div>
+          </>
         ))}
       </div>
     </div>
