@@ -72,61 +72,57 @@ const PlayerSelection: React.FC<Props> = ({
       <div className={classes.attack}>
         <h2>Attackers</h2>
         {formation.attackers?.map((position: string) => (
-          <>
+          <div key={position}>
             <Select
               isClearable
-              key={position}
               name={position}
               onChange={selectedPlayerHandler}
               options={attackSelectOptions}
             />
             <span>{position}</span>
-          </>
+          </div>
         ))}
       </div>
       <div className={classes.midfield}>
         <h2>Midfielders</h2>
         {formation.midfielders?.map((position: string) => (
-          <>
+          <div key={position}>
             <Select
               isClearable
-              key={position}
               name={position}
               onChange={selectedPlayerHandler}
               options={midfieldSelectOptions}
             />
             <span>{position}</span>
-          </>
+          </div>
         ))}
       </div>
       <div className={classes.defense}>
         <h2>Defenders</h2>
         {formation.defenders?.map((position: string) => (
-          <>
+          <div key={position}>
             <Select
               isClearable
-              key={position}
               name={position}
               onChange={selectedPlayerHandler}
               options={defenseSelectOptions}
             />
-            <div className={classes.position}>{position}</div>
-          </>
+            <span>{position}</span>
+          </div>
         ))}
       </div>
       <div className={classes.goalkeeper}>
         <h2>Goalkeepers</h2>
         {formation.goalkeeper?.map((position: string) => (
-          <>
+          <div key={position}>
             <Select
               isClearable
-              key={position}
               name={position}
               onChange={selectedPlayerHandler}
               options={goalkeeperSelectOptions}
             />
-            <div className={classes.position}>{position}</div>
-          </>
+            <span>{position}</span>
+          </div>
         ))}
       </div>
     </div>
